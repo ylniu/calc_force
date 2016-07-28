@@ -1,4 +1,4 @@
-FC=g95
+FC=g95 -ftrace=frame -ftrace=full
 
 all: main_force.exe
 

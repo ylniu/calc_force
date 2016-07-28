@@ -16,6 +16,7 @@
 	do i=1,n
 		lpiv = (ipiv == 0)
 		irc=maxloc(abs(a),outerand(lpiv,lpiv))
+		write(*,*) i, irc
 		ipiv(icol)=ipiv(icol)+1
 		if (ipiv(icol) > 1) call nrerror('gaussj: singular matrix (1)')
 		if (irow /= icol) then
