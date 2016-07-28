@@ -26,7 +26,7 @@ subroutine get_polynomial(npower, powers, nz, x, y, C, D, info)
 	!----------------------------------------------------------------------------
 	! Calculate Cji
 	!
-	C = 0.D0
+	C = 0.0D0
 	do i=1, npower
 		do j=1, npower
 			do r=1, nz
