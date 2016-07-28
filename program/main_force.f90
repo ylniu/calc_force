@@ -42,7 +42,7 @@ program main_force
 	end do
 	!----------------------------------------------------------------------------
 	do ir=1, nr
-		call fitting(nz, nr, ir, x, y, df, info)
+		call fitting(nz, x(1,ir), y(1,ir), df(1,ir), info)
 	end do
 	!----------------------------------------------------------------------------
 	deallocate(x )
