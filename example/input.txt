@@ -1,0 +1,6 @@
+&control
+  if_fit   = f
+  imgscale = 3.0
+  fdata    = "total.txt"
+  fout     = "force.txt"
+/
