@@ -1,36 +1,30 @@
 program main_force
 	use kinds, only: DP
 	use funs , only: gaussj
+	use input, only: power_min, power_max, if_fit, fout, fdata, freq0, kspring, amp
 	implicit none
 	!----------------------------------------------------------------------------
 	integer               :: i, j, nz, nr, iz, ir
 	integer               :: fid, info
-	real(DP)              :: nm, kspring, amp, f0, set
 	real(DP)              :: freqoffset, forceconvert, energyconvert
 	integer               :: np
-	integer               :: power_min
-	integer               :: power_max
-	real(DP)              :: imgscale
 	real(DP), allocatable :: x (:,:)
 	real(DP), allocatable :: y (:,:)
 	real(DP), allocatable :: df(:,:)
 	real(DP), allocatable :: df_fit(:,:)
 	real(DP), allocatable :: pow(:)
 	real(DP)              :: a(3,3), b(3,1)
-	logical               :: if_fit, if_debug, if_debug_gaussj
-	character(200)        :: finp, fdata, fout
+	logical               :: if_debug, if_debug_gaussj
+	character(200)        :: finp
 	!----------------------------------------------------------------------------
-	namelist /control/ if_fit, imgscale, fdata, fout, power_min, power_max
+	namelist /control/ if_fit, fdata, fout, power_min, power_max, freq0, kspring, amp
 	!----------------------------------------------------------------------------
 	!input data-frequecy shift
 	!
 	fid             = 1
-	if_fit          = .false.
 	if_debug        = .true.
 	if_debug_gaussj = .false.
-	power_min       = -8
-	power_max       =  4
-	imgscale        = 3.0
+	call init()
 	!set directory
 	!--------------------------------------sub-----------------------------------
 	call getarg(1, finp)
@@ -69,7 +63,7 @@ program main_force
 	!----------------------------------------------------------------------------
 	!
 	do ir=1, nr
-		call fitting(np, pow, nz, x(1,ir), y(1,ir), df(1,ir), df_fit(1,ir), if_fit, info)
+		call fitting(np, pow, nz, x(1,ir), y(1,ir), df(1,ir), df_fit(1,ir), info)
 	end do
 	open(fid, file=fout)
 		do ir=1, nr

@@ -1,8 +1,11 @@
 &control
   if_fit    = t
-  imgscale  = 3.0
   power_min = -6
   power_max =  2
   fdata     = "total.txt"
   fout      = "force.txt"
+  freq0     = 27400       ! Resonant frequency - far from surface (Hz)
+  kspring   = 1800        ! Cantlever spring constant (N/m)
+  amp       = 1.D-10
+  set       = 1           ! Smoothing - number of points to average
 /
