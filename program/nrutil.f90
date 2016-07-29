@@ -11,7 +11,7 @@ MODULE nrutil
 		MODULE PROCEDURE array_copy_r, array_copy_d, array_copy_i
 	END INTERFACE
 	INTERFACE swap
-		MODULE PROCEDURE swap_i,swap_r,swap_rv,swap_c, &
+		MODULE PROCEDURE swap_i,swap_r,swap_rv,swap_dv,swap_c, &
 			swap_cv,swap_cm,swap_z,swap_zv,swap_zm, &
 			masked_swap_rs,masked_swap_rv,masked_swap_rm
 	END INTERFACE
@@ -121,6 +121,14 @@ CONTAINS
 	a=b
 	b=dum
 	END SUBROUTINE swap_rv
+!BL
+	SUBROUTINE swap_dv(a,b)
+	REAL(DP), DIMENSION(:), INTENT(INOUT) :: a,b
+	REAL(DP), DIMENSION(SIZE(a)) :: dum
+	dum=a
+	a=b
+	b=dum
+	END SUBROUTINE swap_dv
 !BL
 	SUBROUTINE swap_c(a,b)
 	COMPLEX(SPC), INTENT(INOUT) :: a,b

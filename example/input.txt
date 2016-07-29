@@ -1,6 +1,8 @@
 &control
-  if_fit   = f
-  imgscale = 3.0
-  fdata    = "total.txt"
-  fout     = "force.txt"
+  if_fit    = t
+  imgscale  = 3.0
+  power_min = -6
+  power_max =  2
+  fdata     = "total.txt"
+  fout      = "force.txt"
 /

@@ -6,9 +6,11 @@ end module
 module funs
 	implicit none
 	Interface
-		Subroutine gaussj(a,b)
-			Real a(:,:)
-			Real b(:,:)
+		Subroutine gaussj(a,b,d)
+			use kinds, only: DP
+			Real(DP) :: a(:,:)
+			Real(DP) :: b(:,:)
+			logical  :: d
 		End Subroutine gaussj
 	End Interface
 end module
