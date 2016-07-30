@@ -1,7 +1,7 @@
 program main_force
 	use kinds, only: DP
 	use funs , only: gaussj
-	use input, only: power_min, power_max, if_fit, fout, fdata, freq0, kspring, amp
+	use input, only: power_min, power_max, if_fit, fout, fdata, freq0, kspring, amp, set
 	implicit none
 	!----------------------------------------------------------------------------
 	integer               :: i, j, nz, nr, iz, ir
@@ -17,7 +17,7 @@ program main_force
 	logical               :: if_debug, if_debug_gaussj
 	character(200)        :: finp
 	!----------------------------------------------------------------------------
-	namelist /control/ if_fit, fdata, fout, power_min, power_max, freq0, kspring, amp
+	namelist /control/ if_fit, fdata, fout, power_min, power_max, freq0, kspring, amp, set
 	!----------------------------------------------------------------------------
 	!input data-frequecy shift
 	!
