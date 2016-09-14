@@ -24,15 +24,15 @@ subroutine fitting(np, pow, nz, x, y, df, df_fit, info)
 	nsmooth = nz - 4 * set
 	nderiv  = nsmooth - 2
 	!----------------------------------------------------------------------------
-	allocate(df_omega  (nz      ))
-	allocate(df_smooth1(nz-2*set))
-	allocate(df_smooth2(nsmooth ))
-	allocate(df_smooth (nderiv  ))
-	allocate(df_deriv  (nderiv  ))
-	allocate(y_smooth1 (nz-2*set))
-	allocate(y_smooth2 (nsmooth ))
-	allocate(y_deriv   (nderiv  ))
-	allocate(int_z     (nderiv  ))
+	allocate(df_omega  (nz        ))
+	allocate(df_smooth1(nz-2*set  ))
+	allocate(df_smooth2(nsmooth   ))
+	allocate(df_smooth (nderiv    ))
+	allocate(df_deriv  (nderiv    ))
+	allocate(y_smooth1 (nz-2*set  ))
+	allocate(y_smooth2 (nsmooth   ))
+	allocate(y_deriv   (nderiv    ))
+	allocate(int_z     (nderiv    ))
 	!----------------------------------------------------------------------------
 	info     = 0
 	!----------------------------------------------------------------------------
@@ -54,7 +54,7 @@ subroutine fitting(np, pow, nz, x, y, df, df_fit, info)
 	call smooth(nz      , set, df_omega  , df_smooth1, y, y_smooth1)
 	call smooth(nz-2*set, set, df_smooth1, df_smooth2, y_smooth1, y_smooth2)
 	call deriv (nsmooth, df_smooth2, df_smooth, df_deriv, y_smooth2, y_deriv)
-	!call get_int_z(nderiv, y_deriv, df_smooth, df_deriv, int_z)
+	call get_int_z(nderiv, y_deriv, df_smooth, df_deriv, int_z)
 	!----------------------------------------------------------------------------
 	deallocate(df_omega  )
 	deallocate(df_smooth1)
